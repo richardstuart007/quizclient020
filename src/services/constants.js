@@ -2,9 +2,9 @@
 //  Browser Port (29003) ==> Server REMOTE server
 //
 exports.REMOTE_CLIENT = 'REMOTE:29003'
-exports.REMOTE_SERVER = 'REMOTE:Railway'
-exports.REMOTE_DATABASE = 'REMOTE:Railway'
-exports.REMOTE_SERVERURL = 'https://quizserver010-production.up.railway.app'
+exports.REMOTE_SERVER = 'REMOTE:ElephantSQL'
+exports.REMOTE_DATABASE = 'REMOTE:ElephantSQL'
+exports.REMOTE_SERVERURL = 'rosie.db.elephantsql.com'
 //
 //  29003 - Local Client --> Remote Server --> Remote Database
 //
