@@ -60,7 +60,7 @@ const { REM2_REM2_REM2_SERVERURL } = require('../services/constants.js')
 //
 // Debug Settings
 //
-const debugLog = debugSettings()
+const debugLog = debugSettings(true)
 //
 // Global
 //
@@ -106,62 +106,74 @@ export default function App() {
     //  Override LOCAL if Windows port (from package.json)
     //------------------------------------------------------
     const windowport = window.location.port
-    if (windowport) {
-      w_port = windowport
+    if (windowport) w_port = windowport
+    //
+    //  Determine client, server, database, url
+    //
+    switch (w_port) {
       //------------------------------------------------------
       //  Local Client --> Local Server --> Local Database
       //------------------------------------------------------
-      if (w_port === '20003') {
+      case '20003':
         w_Client = LOC_LOC_LOC_CLIENT
         w_Server = LOC_LOC_LOC_SERVER
         w_Database = LOC_LOC_LOC_DATABASE
         w_URL = LOC_LOC_LOC_SERVERURL
-      }
+        break
       //------------------------------------------------------
       //  Local Client --> Local Server --> Remote Database 1/2
       //------------------------------------------------------
-      if (w_port === '20013') {
+      case '20013':
         w_Client = LOC_LOC_REM1_CLIENT
         w_Server = LOC_LOC_REM1_SERVER
         w_Database = REM1_REM1_REM1_DATABASE
         w_URL = LOC_LOC_REM1_SERVERURL
-      }
-      if (w_port === '20023') {
+        break
+      case '20023':
         w_Client = LOC_LOC_REM2_CLIENT
         w_Server = LOC_LOC_REM2_SERVER
         w_Database = REM2_REM2_REM2_DATABASE
         w_URL = LOC_LOC_REM2_SERVERURL
-      }
+        break
       //------------------------------------------------------
       //  Local Client --> Remote Server --> Remote Database 1/2
       //------------------------------------------------------
-      if (w_port === '20113') {
+      case '20113':
         w_Client = LOC_REM1_REM1_CLIENT
         w_Server = REM1_REM1_REM1_SERVER
         w_Database = REM1_REM1_REM1_DATABASE
         w_URL = REM1_REM1_REM1_SERVERURL
-      }
-      if (w_port === '20123') {
+        break
+      case '20123':
         w_Client = LOC_REM2_REM2_CLIENT
         w_Server = REM2_REM2_REM2_SERVER
         w_Database = REM2_REM2_REM2_DATABASE
         w_URL = REM2_REM2_REM2_SERVERURL
-      }
+        break
       //------------------------------------------------------
       //  Remote Client --> Remote Server --> Remote Database 1/2
       //------------------------------------------------------
-      if (w_port === '21113') {
+      case '21113':
         w_Client = REM1_REM1_REM1_CLIENT
         w_Server = REM1_REM1_REM1_SERVER
         w_Database = REM1_REM1_REM1_DATABASE
         w_URL = REM1_REM1_REM1_SERVERURL
-      }
-      if (w_port === '21123') {
+        break
+      case '21123':
         w_Client = REM2_REM2_REM2_CLIENT
         w_Server = REM2_REM2_REM2_SERVER
         w_Database = REM2_REM2_REM2_DATABASE
         w_URL = REM2_REM2_REM2_SERVERURL
-      }
+        break
+      //------------------------------------------------------
+      //  Errors
+      //------------------------------------------------------
+      default:
+        w_Client = 'Error'
+        w_Server = 'Error'
+        w_Database = 'Error'
+        w_URL = 'Error'
+        break
     }
     //------------------------------------------------------
     //
