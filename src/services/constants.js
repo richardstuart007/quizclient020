@@ -1,37 +1,61 @@
+//---------------------------------------------------------------------
+//-  LOCAL Ports
+//---------------------------------------------------------------------
 //
-//  Browser Port (29003) ==> Server REMOTE server
+//  Local Client --> Local Server --> Local Database
 //
-exports.REMOTE_CLIENT = 'REMOTE:29003'
-exports.REMOTE_SERVER = 'REMOTE:ElephantSQL'
-exports.REMOTE_DATABASE = 'REMOTE:ElephantSQL'
-exports.REMOTE_SERVERURL = 'rosie.db.elephantsql.com'
+exports.LOC_LOC_LOC_CLIENT = 'LOCAL:20003'
+exports.LOC_LOC_LOC_SERVER = 'LOCAL:20001'
+exports.LOC_LOC_LOC_SERVERURL = 'http://localhost:20001'
 //
-//  29003 - Local Client --> Remote Server --> Remote Database
+//  Local Client --> Local Server --> Remote Database 1/2
 //
-exports.LOC_REMOTE_REMOTE_CLIENT = 'LOCAL:29003'
+exports.LOC_LOC_REM1_CLIENT = 'LOCAL:20013'
+exports.LOC_LOC_REM1_SERVER = 'LOCAL:20011'
+exports.LOC_LOC_REM1_SERVERURL = 'http://localhost:20011'
+
+exports.LOC_LOC_REM2_CLIENT = 'LOCAL:20023'
+exports.LOC_LOC_REM2_SERVER = 'LOCAL:20021'
+exports.LOC_LOC_REM2_SERVERURL = 'http://localhost:20021'
 //
-//  29013 - Local Client --> Local Server --> Remote Database
+//  Local Client --> Remote Server --> Remote Database 1/2
 //
-exports.LOC_LOC_REMOTE_CLIENT = 'LOCAL:29013'
-exports.LOC_LOC_REMOTE_SERVER = 'LOCAL:29001'
-exports.LOC_LOC_REMOTE_SERVERURL = 'http://localhost:29001'
-//
-//  28003 - Local Client --> Local Server --> Local Database
-//
-exports.LOC_LOC_LOC_CLIENT = 'LOCAL:28003'
-exports.LOC_LOC_LOC_SERVER = 'LOCAL:28001'
+exports.LOC_REM1_REM1_CLIENT = 'LOCAL:20113'
+exports.LOC_REM2_REM2_CLIENT = 'LOCAL:20123'
+//---------------------------------------------------------------------
+//-  SERVERS
+//---------------------------------------------------------------------
+exports.REM1_REM1_REM1_SERVER = 'REMOTE:Railway'
+exports.REM2_REM2_REM2_SERVER = 'REMOTE:Netlify'
+//---------------------------------------------------------------------
+//-  DATABASE
+//---------------------------------------------------------------------
 exports.LOC_LOC_LOC_DATABASE = 'LOCAL'
-exports.LOC_LOC_LOC_SERVERURL = 'http://localhost:28001'
+exports.REM1_REM1_REM1_DATABASE = 'REMOTE:Railway'
+exports.REM2_REM2_REM2_DATABASE = 'REMOTE:ElephantSQL'
+//---------------------------------------------------------------------
+//-  REMOTE Ports
+//---------------------------------------------------------------------
 //
-//  Server details
+//  Remote Client --> Remote Server --> Remote Database 1
 //
+exports.REM1_REM1_REM1_CLIENT = 'REMOTE:21113'
+exports.REM1_REM1_REM1_SERVERURL = 'https://quizserver020-production.up.railway.app'
+//
+//  Remote Client --> Remote Server --> Remote Database 2
+//
+exports.REM2_REM2_REM2_CLIENT = 'REMOTE:21123'
+exports.REM2_REM2_REM2_SERVERURL = 'https://quizserver020.netlify.app'
+//---------------------------------------------------------------------
+//-  Server details
+//---------------------------------------------------------------------
 exports.URL_REGISTER = '/QuizRegister'
 exports.URL_SIGNIN = '/QuizSignin'
 exports.URL_PROFILE = '/QuizProfile/:id'
 exports.URL_TABLES = '/QuizTables'
-//
-//  Other Parameters
-//
+//---------------------------------------------------------------------
+//-  Other Parameters
+//---------------------------------------------------------------------
 exports.MAX_QUESTIONS_SELECT = 50
 exports.WAIT = 100
 exports.WAIT_MAX_TRY = 20

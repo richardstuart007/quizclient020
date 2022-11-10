@@ -28,27 +28,35 @@ const theme = createTheme({})
 //
 //  Client
 //
-const { REMOTE_CLIENT } = require('../services/constants.js')
-const { LOC_REMOTE_REMOTE_CLIENT } = require('../services/constants.js')
 const { LOC_LOC_LOC_CLIENT } = require('../services/constants.js')
-const { LOC_LOC_REMOTE_CLIENT } = require('../services/constants.js')
+const { LOC_LOC_REM1_CLIENT } = require('../services/constants.js')
+const { LOC_LOC_REM2_CLIENT } = require('../services/constants.js')
+const { LOC_REM1_REM1_CLIENT } = require('../services/constants.js')
+const { LOC_REM2_REM2_CLIENT } = require('../services/constants.js')
+const { REM1_REM1_REM1_CLIENT } = require('../services/constants.js')
+const { REM2_REM2_REM2_CLIENT } = require('../services/constants.js')
 //
 //  Server
 //
-const { REMOTE_SERVER } = require('../services/constants.js')
-const { LOC_LOC_REMOTE_SERVER } = require('../services/constants.js')
 const { LOC_LOC_LOC_SERVER } = require('../services/constants.js')
+const { LOC_LOC_REM1_SERVER } = require('../services/constants.js')
+const { LOC_LOC_REM2_SERVER } = require('../services/constants.js')
+const { REM1_REM1_REM1_SERVER } = require('../services/constants.js')
+const { REM2_REM2_REM2_SERVER } = require('../services/constants.js')
 //
 //  Database
 //
-const { REMOTE_DATABASE } = require('../services/constants.js')
 const { LOC_LOC_LOC_DATABASE } = require('../services/constants.js')
+const { REM1_REM1_REM1_DATABASE } = require('../services/constants.js')
+const { REM2_REM2_REM2_DATABASE } = require('../services/constants.js')
 //
 //  URL
 //
-const { REMOTE_SERVERURL } = require('../services/constants.js')
-const { LOC_LOC_REMOTE_SERVERURL } = require('../services/constants.js')
 const { LOC_LOC_LOC_SERVERURL } = require('../services/constants.js')
+const { LOC_LOC_REM1_SERVERURL } = require('../services/constants.js')
+const { LOC_LOC_REM2_SERVERURL } = require('../services/constants.js')
+const { REM1_REM1_REM1_SERVERURL } = require('../services/constants.js')
+const { REM2_REM2_REM2_SERVERURL } = require('../services/constants.js')
 //
 // Debug Settings
 //
@@ -87,47 +95,75 @@ export default function App() {
   function firstTime() {
     if (debugLog) console.log(`First Time APP Reset`)
     //------------------------------------------------------
-    //  Set Defaults for REMOTE setup
+    //  Set Defaults for REMOTE setup - Remote Netlify
     //------------------------------------------------------
-    let port = '29003'
-    let w_Client = REMOTE_CLIENT
-    let w_Database = REMOTE_DATABASE
-    let w_Server = REMOTE_SERVER
-    let w_URL = REMOTE_SERVERURL
+    let w_port = '21123'
+    let w_Client
+    let w_Database
+    let w_Server
+    let w_URL
     //------------------------------------------------------
     //  Override LOCAL if Windows port (from package.json)
     //------------------------------------------------------
     const windowport = window.location.port
     if (windowport) {
-      port = windowport
+      w_port = windowport
       //------------------------------------------------------
-      //  29003 - Local Client --> Remote Server --> Remote Database
+      //  Local Client --> Local Server --> Local Database
       //------------------------------------------------------
-      if (port === '29003') {
-        w_Client = LOC_REMOTE_REMOTE_CLIENT
-        w_Server = REMOTE_SERVER
-        w_Database = REMOTE_DATABASE
-        w_URL = REMOTE_SERVERURL
-      }
-      //------------------------------------------------------
-      //  29013 - Local Client --> Local Server --> Remote Database
-      //------------------------------------------------------
-      if (port === '29013') {
-        w_Client = LOC_LOC_REMOTE_CLIENT
-        w_Server = LOC_LOC_REMOTE_SERVER
-        w_Database = REMOTE_DATABASE
-        w_URL = LOC_LOC_REMOTE_SERVERURL
-      }
-      //------------------------------------------------------
-      //  28003 - Local Client --> Local Server --> Local Database
-      //------------------------------------------------------
-      if (port === '28003') {
+      if (w_port === '20003') {
         w_Client = LOC_LOC_LOC_CLIENT
         w_Server = LOC_LOC_LOC_SERVER
         w_Database = LOC_LOC_LOC_DATABASE
         w_URL = LOC_LOC_LOC_SERVERURL
       }
+      //------------------------------------------------------
+      //  Local Client --> Local Server --> Remote Database 1/2
+      //------------------------------------------------------
+      if (w_port === '20013') {
+        w_Client = LOC_LOC_REM1_CLIENT
+        w_Server = LOC_LOC_REM1_SERVER
+        w_Database = REM1_REM1_REM1_DATABASE
+        w_URL = LOC_LOC_REM1_SERVERURL
+      }
+      if (w_port === '20023') {
+        w_Client = LOC_LOC_REM2_CLIENT
+        w_Server = LOC_LOC_REM2_SERVER
+        w_Database = REM2_REM2_REM2_DATABASE
+        w_URL = LOC_LOC_REM2_SERVERURL
+      }
+      //------------------------------------------------------
+      //  Local Client --> Remote Server --> Remote Database 1/2
+      //------------------------------------------------------
+      if (w_port === '20113') {
+        w_Client = LOC_REM1_REM1_CLIENT
+        w_Server = REM1_REM1_REM1_SERVER
+        w_Database = REM1_REM1_REM1_DATABASE
+        w_URL = REM1_REM1_REM1_SERVERURL
+      }
+      if (w_port === '20123') {
+        w_Client = LOC_REM2_REM2_CLIENT
+        w_Server = REM2_REM2_REM2_SERVER
+        w_Database = REM2_REM2_REM2_DATABASE
+        w_URL = REM2_REM2_REM2_SERVERURL
+      }
+      //------------------------------------------------------
+      //  Remote Client --> Remote Server --> Remote Database 1/2
+      //------------------------------------------------------
+      if (w_port === '21113') {
+        w_Client = REM1_REM1_REM1_CLIENT
+        w_Server = REM1_REM1_REM1_SERVER
+        w_Database = REM1_REM1_REM1_DATABASE
+        w_URL = REM1_REM1_REM1_SERVERURL
+      }
+      if (w_port === '21123') {
+        w_Client = REM2_REM2_REM2_CLIENT
+        w_Server = REM2_REM2_REM2_SERVER
+        w_Database = REM2_REM2_REM2_DATABASE
+        w_URL = REM2_REM2_REM2_SERVERURL
+      }
     }
+    //------------------------------------------------------
     //
     //  Store Client, Server, Database, URL
     //
@@ -137,15 +173,16 @@ export default function App() {
     sessionStorage.setItem('App_Settings_URL', JSON.stringify(w_URL))
     if (debugLog)
       console.log(
-        `QuizClient-PORT(${port}) CLIENT(${w_Client}) SERVER(${w_Server}) DATABASE(${w_Database}) URL(${w_URL})`
+        `PORT(${w_port}) CLIENT(${w_Client}) SERVER(${w_Server}) DATABASE(${w_Database}) URL(${w_URL})`
       )
     //
     //  DevMode ?
     //
     let App_Settings_DevMode
-    w_Client === REMOTE_CLIENT ? (App_Settings_DevMode = false) : (App_Settings_DevMode = true)
+    w_Client === REM1_REM1_REM1_CLIENT || w_Client === REM2_REM2_REM2_CLIENT
+      ? (App_Settings_DevMode = false)
+      : (App_Settings_DevMode = true)
     sessionStorage.setItem('App_Settings_DevMode', App_Settings_DevMode)
-
     //
     //  Navigation
     //
