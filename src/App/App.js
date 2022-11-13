@@ -28,35 +28,39 @@ const theme = createTheme({})
 //
 //  Client
 //
-const { LOC_LOC_LOC_CLIENT } = require('../services/constants.js')
-const { LOC_LOC_REM1_CLIENT } = require('../services/constants.js')
-const { LOC_LOC_REM2_CLIENT } = require('../services/constants.js')
-const { LOC_REM1_REM1_CLIENT } = require('../services/constants.js')
-const { LOC_REM2_REM2_CLIENT } = require('../services/constants.js')
-const { REM1_REM1_REM1_CLIENT } = require('../services/constants.js')
-const { REM2_REM2_REM2_CLIENT } = require('../services/constants.js')
+const { LOC_L10_DESC_CLIENT } = require('../services/constants.js')
+const { LOC_L20_DESC_CLIENT } = require('../services/constants.js')
+const { LOC_LOC_R10_DESC_CLIENT } = require('../services/constants.js')
+const { LOC_LOC_R20_DESC_CLIENT } = require('../services/constants.js')
+const { LOC_R10_R10_DESC_CLIENT } = require('../services/constants.js')
+const { LOC_R20_R20_DESC_CLIENT } = require('../services/constants.js')
+const { R10_DESC_CLIENT } = require('../services/constants.js')
+const { R20_DESC_CLIENT } = require('../services/constants.js')
 //
 //  Server
 //
-const { LOC_LOC_LOC_SERVER } = require('../services/constants.js')
-const { LOC_LOC_REM1_SERVER } = require('../services/constants.js')
-const { LOC_LOC_REM2_SERVER } = require('../services/constants.js')
-const { REM1_REM1_REM1_SERVER } = require('../services/constants.js')
-const { REM2_REM2_REM2_SERVER } = require('../services/constants.js')
+const { LOC_L10_DESC_SERVER } = require('../services/constants.js')
+const { LOC_L20_DESC_SERVER } = require('../services/constants.js')
+const { LOC_LOC_R10_DESC_SERVER } = require('../services/constants.js')
+const { LOC_LOC_R20_DESC_SERVER } = require('../services/constants.js')
+const { R10_DESC_SERVER } = require('../services/constants.js')
+const { R20_DESC_SERVER } = require('../services/constants.js')
 //
 //  Database
 //
-const { LOC_LOC_LOC_DATABASE } = require('../services/constants.js')
-const { REM1_REM1_REM1_DATABASE } = require('../services/constants.js')
-const { REM2_REM2_REM2_DATABASE } = require('../services/constants.js')
+const { L10_DESC_DATABASE } = require('../services/constants.js')
+const { L20_DESC_DATABASE } = require('../services/constants.js')
+const { R10_DESC_DATABASE } = require('../services/constants.js')
+const { R20_DESC_DATABASE } = require('../services/constants.js')
 //
 //  URL
 //
-const { LOC_LOC_LOC_SERVERURL } = require('../services/constants.js')
-const { LOC_LOC_REM1_SERVERURL } = require('../services/constants.js')
-const { LOC_LOC_REM2_SERVERURL } = require('../services/constants.js')
-const { REM1_REM1_REM1_SERVERURL } = require('../services/constants.js')
-const { REM2_REM2_REM2_SERVERURL } = require('../services/constants.js')
+const { LOC_L10_URLSERVER } = require('../services/constants.js')
+const { LOC_L20_URLSERVER } = require('../services/constants.js')
+const { LOC_R10_URLSERVER } = require('../services/constants.js')
+const { LOC_R20_URLSERVER } = require('../services/constants.js')
+const { R10_URLSERVER } = require('../services/constants.js')
+const { R20_URLSERVER } = require('../services/constants.js')
 //
 // Debug Settings
 //
@@ -97,7 +101,7 @@ export default function App() {
     //------------------------------------------------------
     //  Set Defaults for REMOTE setup - Remote Netlify
     //------------------------------------------------------
-    let w_port = '21123'
+    let w_port = '53112'
     let w_Client
     let w_Database
     let w_Server
@@ -112,58 +116,64 @@ export default function App() {
     //
     switch (w_port) {
       //------------------------------------------------------
-      //  Local Client --> Local Server --> Local Database
+      //  Local Client --> Local Server --> Local Database 10/20
       //------------------------------------------------------
-      case '20003':
-        w_Client = LOC_LOC_LOC_CLIENT
-        w_Server = LOC_LOC_LOC_SERVER
-        w_Database = LOC_LOC_LOC_DATABASE
-        w_URL = LOC_LOC_LOC_SERVERURL
+      case '53001':
+        w_Client = LOC_L10_DESC_CLIENT
+        w_Server = LOC_L10_DESC_SERVER
+        w_Database = L10_DESC_DATABASE
+        w_URL = LOC_L10_URLSERVER
+        break
+      case '53002':
+        w_Client = LOC_L20_DESC_CLIENT
+        w_Server = LOC_L20_DESC_SERVER
+        w_Database = L20_DESC_DATABASE
+        w_URL = LOC_L20_URLSERVER
         break
       //------------------------------------------------------
-      //  Local Client --> Local Server --> Remote Database 1/2
+      //  Local Client --> Local Server --> Remote Database 10/20
       //------------------------------------------------------
-      case '20013':
-        w_Client = LOC_LOC_REM1_CLIENT
-        w_Server = LOC_LOC_REM1_SERVER
-        w_Database = REM1_REM1_REM1_DATABASE
-        w_URL = LOC_LOC_REM1_SERVERURL
+      case '53211':
+        w_Client = LOC_LOC_R10_DESC_CLIENT
+        w_Server = LOC_LOC_R10_DESC_SERVER
+        w_Database = R10_DESC_DATABASE
+        w_URL = LOC_R10_URLSERVER
         break
-      case '20023':
-        w_Client = LOC_LOC_REM2_CLIENT
-        w_Server = LOC_LOC_REM2_SERVER
-        w_Database = REM2_REM2_REM2_DATABASE
-        w_URL = LOC_LOC_REM2_SERVERURL
-        break
-      //------------------------------------------------------
-      //  Local Client --> Remote Server --> Remote Database 1/2
-      //------------------------------------------------------
-      case '20113':
-        w_Client = LOC_REM1_REM1_CLIENT
-        w_Server = REM1_REM1_REM1_SERVER
-        w_Database = REM1_REM1_REM1_DATABASE
-        w_URL = REM1_REM1_REM1_SERVERURL
-        break
-      case '20123':
-        w_Client = LOC_REM2_REM2_CLIENT
-        w_Server = REM2_REM2_REM2_SERVER
-        w_Database = REM2_REM2_REM2_DATABASE
-        w_URL = REM2_REM2_REM2_SERVERURL
+      case '53212':
+        w_Client = LOC_LOC_R20_DESC_CLIENT
+        w_Server = LOC_LOC_R20_DESC_SERVER
+        w_Database = R20_DESC_DATABASE
+        w_URL = LOC_R20_URLSERVER
         break
       //------------------------------------------------------
-      //  Remote Client --> Remote Server --> Remote Database 1/2
+      //  Local Client --> Remote Server --> Remote Database 10/20
       //------------------------------------------------------
-      case '21113':
-        w_Client = REM1_REM1_REM1_CLIENT
-        w_Server = REM1_REM1_REM1_SERVER
-        w_Database = REM1_REM1_REM1_DATABASE
-        w_URL = REM1_REM1_REM1_SERVERURL
+      case '53011':
+        w_Client = LOC_R10_R10_DESC_CLIENT
+        w_Server = R10_DESC_SERVER
+        w_Database = R10_DESC_DATABASE
+        w_URL = R10_URLSERVER
         break
-      case '21123':
-        w_Client = REM2_REM2_REM2_CLIENT
-        w_Server = REM2_REM2_REM2_SERVER
-        w_Database = REM2_REM2_REM2_DATABASE
-        w_URL = REM2_REM2_REM2_SERVERURL
+      case '53012':
+        w_Client = LOC_R20_R20_DESC_CLIENT
+        w_Server = R20_DESC_SERVER
+        w_Database = R20_DESC_DATABASE
+        w_URL = R20_URLSERVER
+        break
+      //------------------------------------------------------
+      //  Remote Client --> Remote Server --> Remote Database 10/20
+      //------------------------------------------------------
+      case '53111':
+        w_Client = R10_DESC_CLIENT
+        w_Server = R10_DESC_SERVER
+        w_Database = R10_DESC_DATABASE
+        w_URL = R10_URLSERVER
+        break
+      case '53112':
+        w_Client = R20_DESC_CLIENT
+        w_Server = R20_DESC_SERVER
+        w_Database = R20_DESC_DATABASE
+        w_URL = R20_URLSERVER
         break
       //------------------------------------------------------
       //  Errors
@@ -191,7 +201,7 @@ export default function App() {
     //  DevMode ?
     //
     let App_Settings_DevMode
-    w_Client === REM1_REM1_REM1_CLIENT || w_Client === REM2_REM2_REM2_CLIENT
+    w_Client === R10_DESC_CLIENT || w_Client === R20_DESC_CLIENT
       ? (App_Settings_DevMode = false)
       : (App_Settings_DevMode = true)
     sessionStorage.setItem('App_Settings_DevMode', App_Settings_DevMode)
