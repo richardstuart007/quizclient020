@@ -39,8 +39,6 @@ export default async function apiAxios(method, url, data) {
     //  Catch Error
     //
   } catch (err) {
-    const message = err.response.data
-    console.log(message)
     console.log(err)
     return null
   }

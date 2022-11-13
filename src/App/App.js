@@ -60,7 +60,7 @@ const { REM2_REM2_REM2_SERVERURL } = require('../services/constants.js')
 //
 // Debug Settings
 //
-const debugLog = debugSettings(true)
+const debugLog = debugSettings()
 //
 // Global
 //
