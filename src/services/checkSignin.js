@@ -62,6 +62,7 @@ export default async function checkSignin(props) {
       //  SQL database
       //
       let resultData = []
+      if (debugLog) console.log('body ', body)
       resultData = await apiAxios(method, URL, body)
       //
       // No data

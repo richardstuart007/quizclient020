@@ -20,6 +20,7 @@ const debugLog = debugSettings()
 export default async function apiAxios(method, url, data) {
   try {
     if (debugLog) console.log(`url(${url}) method(${method})`)
+    if (debugLog) console.log('data ', data)
     const response = await axios({
       method: method,
       url: url,

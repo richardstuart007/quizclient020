@@ -43,7 +43,6 @@ export default function QuizSignin({ handlePage }) {
   //  Get User
   //
   const User_Settings_User = JSON.parse(sessionStorage.getItem('User_Settings_User'))
-  if (debugLog) console.log('User_Settings_User ', User_Settings_User)
   if (User_Settings_User) initialFValues.email = User_Settings_User.u_email
   if (debugLog) console.log('initialFValues ', initialFValues)
   //
