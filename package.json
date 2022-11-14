@@ -1,5 +1,6 @@
 {
   "name": "quizclient",
+  "homepage": "https://richardstuart007.github.io/quizclient020",
   "version": "1.20.1",
   "private": true,
   "dependencies": {
